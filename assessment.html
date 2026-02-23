@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment — EthioTurkeyVisaCheck</title>
+
+<style>
+/* ===== GLOBAL ===== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #050510;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+}
+
+header a {
+  color: #00f0ff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+header a:hover {
+  color: white;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(0,0,0,0.6);
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0,255,255,0.2);
+  box-shadow: 0 0 15px rgba(0,255,255,0.1);
+}
+
+h2 {
+  color: #00f0ff;
+}
+
+/* Inputs */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: none;
+  background: #111;
+  color: white;
+}
+
+/* ===== BUTTONS ===== */
+.option-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.option-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background: #ffd966;
+  color: black;
+  transition: 0.3s;
+}
+
+.option-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #ffd966;
+}
+
+.option-btn.yes.selected {
+  background: #00ff88;
+  color: black;
+  box-shadow: 0 0 15px #00ff88;
+}
+
+.option-btn.no.selected {
+  background: #ff4d4d;
+  color: white;
+  box-shadow: 0 0 15px #ff4d4d;
+}
+
+/* Upload Section */
+.upload {
+  margin-top: 10px;
+  display: none;
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  background: #00f0ff;
+  color: black;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  box-shadow: 0 0 20px #00f0ff;
+}
+
+/* Result Box */
+.result {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(0,0,0,0.7);
+  border: 1px solid #00f0ff;
+}
+
+.telegram-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 25px;
+  border-radius: 25px;
+  background: #0088cc;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.telegram-btn:hover {
+  box-shadow: 0 0 15px #0088cc;
+}
+
+.error {
+  color: #ff4d4d;
+  margin-top: 15px;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>EthioTurkeyVisaCheck</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="assessment.html">Assessment</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- USER INFO -->
+  <div class="card">
+    <h2>User Information</h2>
+    <p>መረጃዎችን በአግባቡ ይሙሉ</p>
+    <label>Full Name  (ሙሉ ስም) </label>
+    <input type="text" id="fullName" placeholder="ለምሳሌ Abebe Kebede">
+    <label>Telegram Username (የእርሶ በ@ የሚጀምር ቴሌግራም ስም) </label>
+    <input type="text" id="telegram" placeholder=" ለምሳሌ @username">
+    <label>Age (እድሜ) </label>
+    <input type="number" id="age" placeholder="ለምሳሌ 28">
+    <label>Final Bank Statement Balance (አካውንቶ ላይ ያለውን የገንዝብ መጠን ይግለጹ)</label>
+    <input type="number" id="bankBalance" placeholder="ለምሳሌ 875000">
+     <label>provide Passport expiry date (ፓስፖርቶ እስከ መች እንደሚያገለግል ይግለጹ)</label>
+     <input type="date" id="passportExpiry">
+  </div>
+<h2> ከዚህ በታች ያሎትን ዶክመንቶች በ pdf Upload ያድርጉና ምን ማሻሻል እንዳለቦት ዝርዝር መረጃ በነፃ ያግኙ</h2>
+  <!-- PASSPORT -->
+  <div class="card">
+    <h2>Passport (ፓስፖርት) </h2>
+    <p>Upload passport (ፓስፖርት Pdf እዚህ ጋር upload ያድርጉ).</p>
+    <div class="option-buttons">
+      <button class="option-btn yes አለኝ" onclick="selectOption(this,'passportUpload')">Yes አለኝ</button>
+      <button class="option-btn no የለኝም" onclick="selectOption(this,'passportUpload')">No የለኝም</button>
+    </div>
+    <div class="upload" id="passportUpload">
+      <input type="file" accept="application/pdf">
+    </div>
+  </div>
+
+  <!-- DOCUMENTS -->
+  <script>
+  const docs = [
+    ["Business License (የንግድ ፈቃድ)","licenseUpload"],
+    ["Car Libre (የመኪና ሊብሬ)","carUpload"],
+    ["Land Holding (የቤት ካርታ)","landUpload"],
+    ["Invitation Letter (ከቱርክ የተላከ የግብሻ ደብዳቤ)","inviteUpload"],
+    ["Hotel Reservation (ቱርክ ላይ የተያዘ ማረፊያ ሆቴል)","hotelUpload"]
+  ];
+
+  docs.forEach(d => {
+    document.write(`
+    <div class="card">
+      <h2>${d[0]}</h2>
+      <div class="option-buttons">
+        <button class="option-btn yes አለኝ" onclick="selectOption(this,'${d[1]}')">Yes አለኝ</button>
+        <button class="option-btn no የለኝም" onclick="selectOption(this,'${d[1]}')">No የለኝም</button>
+      </div>
+      <div class="upload" id="${d[1]}">
+        <input type="file" accept="application/pdf">
+      </div>
+    </div>`);
+  });
+  </script>
+
+  <button class="submit-btn" onclick="validateAndAssess()">Submit Assessment</button>
+  <div id="errorMsg" class="error"></div>
+
+  <div class="result" id="resultBox">
+    <h2>Assessment Result</h2>
+    <p id="resultText"></p>
+    <a href="https://t.me/EthioTurkeyVisaCheck" target="_blank" class="telegram-btn">
+      Join Telegram Group
+    </a>
+  </div>
+
+</div>
+
+<script>
+function selectOption(button, uploadId) {
+    const buttons = button.parentElement.querySelectorAll('.option-btn');
+    buttons.forEach(btn => btn.classList.remove('selected'));
+    button.classList.add('selected');
+    const upload = document.getElementById(uploadId);
+    upload.style.display = button.classList.contains('yes') ? 'block' : 'none';
+}
+
+function generateReference() {
+    return "DM" + Math.floor(100000 + Math.random() * 900000);
+}
+
+function copyRef() {
+    const refText = document.getElementById("refCode").innerText;
+    navigator.clipboard.writeText(refText).then(() => alert("Reference copied: " + refText));
+}
+
+async function validateAndAssess() {
+    // 1. GET ALL INPUTS
+    const name = document.getElementById('fullName').value.trim();
+    const telegramUser = document.getElementById('telegram').value.trim();
+    const ageVal = document.getElementById('age').value;
+    const bank = document.getElementById('bankBalance').value;
+    const expiry = document.getElementById('passportExpiry').value;
+
+    let errors = [];
+
+    // 2. VALIDATION
+    if (!name) errors.push("Full Name is missing");
+    if (!telegramUser) errors.push("Telegram Username is missing");
+    if (!ageVal) errors.push("Age is missing");
+    if (!bank) errors.push("Bank Balance is missing");
+    if (!expiry) errors.push("Passport expiry date is missing");
+    if (telegramUser && !telegramUser.startsWith("@")) {
+        errors.push("Telegram username must start with '@'.");
+    }
+
+    // Check Yes/No selections
+    document.querySelectorAll('.option-buttons').forEach(group => {
+        const cardTitle = group.closest('.card').querySelector('h2').innerText;
+        const yes = group.querySelector('.yes.selected');
+        const no = group.querySelector('.no.selected');
+        const upload = group.nextElementSibling;
+
+        if (!yes && !no) errors.push(`Please select YES or NO for: ${cardTitle}`);
+        if (yes && upload && upload.querySelector('input').files.length === 0) {
+            errors.push(`Please upload PDF for: ${cardTitle}`);
+        }
+    });
+
+    if (errors.length > 0) {
+        document.getElementById('errorMsg').innerText = errors.join("\n");
+        document.getElementById('resultBox').style.display = "none";
+        return;
+    }
+
+    document.getElementById('errorMsg').innerText = "";
+
+    // 3. SCORE LOGIC
+    let score = 50;
+    let reasons = [];
+    const months = (new Date(expiry) - new Date()) / (1000 * 60 * 60 * 24 * 30);
+    
+    if (months >= 12) { score += 20; reasons.push("Valid passport"); }
+    else { score -= 20; reasons.push("Passport validity below 12 months"); }
+
+    if (bank >= 1700000) { score += 20; reasons.push("Strong financial proof"); }
+    else { score -= 15; reasons.push("Bank balance below 1.7M ETB"); }
+
+    const probability = Math.max(0, Math.min(score, 100));
+    const ref = generateReference();
+
+    // 4. SHOW RESULT
+    document.getElementById('resultText').innerHTML = `
+        <strong>Reference Code:</strong> <span id="refCode">${ref}</span> 
+        <button onclick="copyRef()" style="margin-left:10px;padding:4px 10px;border-radius:8px;border:none;cursor:pointer;background:#00f0ff;">Copy</button>
+        <br><br>
+        <strong>Approval Probability:</strong> <span style="color:#00f0ff;">${probability}%</span><br><br>
+        <strong>Reasons:</strong><br>• ${reasons.join("<br>• ")}
+        <br><br>
+        የንግድ ፈቃድ ፣ ከቱርክ የተላከ የግብሻ ደብዳቤ እና ከ 2 ሚልየን ብር በላይ የሆነ የባንክ እስቴትመንት ቪዛ እንዲያገኙ ያስችሎታል፡፡
+        <br><br>
+        <strong>የ EthioTurkeyVisaCheck ቴሌግራም ግሩፕ ይቀላቀሉ እና ይህን ኮድ <span style="color:#00f0ff;">${ref}</span></strong>
+    `;
+    document.getElementById('resultBox').style.display = "block";
+
+    // 5. SEND DATA TO TELEGRAM
+    const formData = new FormData();
+    formData.append("fullName", name);
+    formData.append("telegram", telegramUser);
+    formData.append("reference", ref);
+    formData.append("age", ageVal);
+    formData.append("bankBalance", bank);
+    formData.append("passportExpiry", expiry);
+
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        if (input.files.length > 0) {
+            const docLabel = input.closest('.upload').id;
+            formData.append("files", input.files[0], `${docLabel}.pdf`);
+        }
+    });
+
+    try {
+        await fetch("http://127.0.0.1:5000/upload", { method: "POST", body: formData });
+    } catch (e) { console.error("Sync failed", e); }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EthioTurkeyVisaCheck</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== GLOBAL STYLES ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #050816;
+      color: #e5e7eb;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(5, 8, 22, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: 600;
+      color: #00f5ff;
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover {
+      color: #00f5ff;
+    }
+
+    /* ===== HERO VIDEO SECTION ===== */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(40%);
+    }
+
+    .hero-content {
+      max-width: 700px;
+      padding: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #00f5ff;
+      text-shadow: 0 0 20px #00f5ff;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      color: #d1d5db;
+    }
+
+    /* ===== NEON BUTTON ===== */
+    .neon-btn {
+      padding: 0.9rem 2rem;
+      border: 2px solid #00f5ff;
+      background: transparent;
+      color: #00f5ff;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #00f5ff;
+    }
+
+    .neon-btn:hover {
+      background: #00f5ff;
+      color: #050816;
+      box-shadow: 0 0 25px #00f5ff, 0 0 50px #00f5ff;
+      transform: scale(1.05);
+    }
+
+    /* ===== INFO SECTION ===== */
+    .info-section {
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+
+    .info-section h2 {
+      color: #00f5ff;
+      margin-bottom: 1rem;
+    }
+
+    .info-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .info-box {
+      background: rgba(0, 245, 255, 0.05);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 15px rgba(0, 245, 255, 0.1);
+    }
+
+    .info-box h3 {
+      color: #00f5ff;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-box p {
+      font-size: 0.9rem;
+      color: #d1d5db;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta {
+      padding: 4rem 1.5rem;
+      text-align: center;
+      background: linear-gradient(90deg, #050816, #0f172a);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    /* ===== MOBILE OPTIMIZATION ===== */
+    @media (min-width: 768px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      .info-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">EthioTurkeyVisaCheck</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="assessment.html">Assessment</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO WITH VIDEO -->
+  <section class="hero">
+    <video autoplay muted loop playsinline>
+      <source src="video1.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-content">
+      <h1>Turkey Visa Check for Ethiopians</h1>
+      <p> የኮቴ 43,000 ብር ከመክሰሮ በፊት ዶክመንቶ ቪዛ እንዲሚያስገኝሎት በነፃ እዚህ ያጣሩ፡፡ </p>
+      <p>Know your visa approval chances before applying. Avoid rejection and prepare the right documents.</p>
+      <a href="assessment.html"><button class="neon-btn">Start Assessment (ዶክመንቶ ለቪዛ ብቁ መሆኑን ይሄን በመጫን ያጣሩ)</button></a>
+    </div>
+  </section>
+
+  <!-- INFO SECTION -->
+  <section class="info-section">
+    <h2>የቱርክ ቪዛ እንዲያገኙ እንረዳዎታለን</h2>
+    <div class="info-grid">
+      <div class="info-box">
+        <h3>📄 ለቱርክ ቪዛ በነፃ ዶክመንት የማጣራት ስራ</h3>
+        <p>የቱርክ ቪዛ ለማግኘት ፓስፖርት፣ ባንክ እስቴትመንት፣ ንግድ ፈቃድ እና ሌሎች ዶክመንቶችን  upload ሲያደርጉ ምን ማሟላት እና ምን ማሻሻል እንዳለቦት በነፃ እናሳውቆታለን፡፡</p>
+        <p> የማይመለስ 43,000 ብር የኮቴ ከፍለው ከመክሰሮ በፊት ዶክመንቶ ለቱርክ ቪዛ ብቁ መሆን አለመሆኑን ምንም ሳይከፍሉ እናሳውቆታለን፡፡</p>
+      </div>
+      <div class="info-box">
+        <h3>📊 ያልተሟላ ዶክመንቶ እንዲሟላ ማድረግ</h3>
+        <p>የጎደሎትን ዶክመንት በመጠቆም እና የሌሎትን ዶክመንት ወዲያው እንዲኖሮት በማድረግና ዶክመንቶን በማደራጅት ቪዛ እንዲያገኙ እናድርጎታለን፡</p>
+      </div>
+      <div class="info-box">
+        <h3>💬 በቴሌግራም ወሳኝ መረጃ እና የማማከር አገልግሎት በነፃ</h3>
+        <p>ዶክመንቶን ገምግመን ሙሉ መረጃ በቴሌግራም እንልክሎታልን፡፡ በEthioTurkeyVisaCheck ቴሌግራም ግሩፕ ወቅታዊ እና መሰረታዊ መረጃዎችን ሰለምንልቅ የቴሌግራም ግሩፕን ይቀላቀሉ፡</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Check Your Visa Readiness Now</h2>
+    <br>
+    <a href="assessment.html"><button class="neon-btn">ዶክመንቶ ለቪዛ ብቁ መሆኑን ይሄን በመጫን ያጣሩ</button></a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 EthioTurkeyVisaCheck • Secure • Private • Built for Ethiopian Travelers
+  </footer>
+
+</body>
+</html>
