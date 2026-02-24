@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* General Styles */
 body {
   font-family: 'Roboto', sans-serif;
@@ -175,4 +176,183 @@ footer a {
     flex-direction: column;
     align-items: center;
   }
+=======
+/* General Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #F9FAFB;
+  color: #1F2937;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #1E3A8A;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  font-weight: bold;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Hero Section */
+#hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+  background: linear-gradient(to right, #1E3A8A, #2563EB);
+  color: white;
+}
+
+.hero-content {
+  flex: 1 1 400px;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-content button {
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+}
+
+.hero-image {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.hero-image img {
+  max-width: 300px;
+  border-radius: 12px;
+}
+
+/* Social Proof */
+#social-proof {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.counters {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.counter-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  width: 180px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.counter {
+  font-size: 2rem;
+  color: #16A34A;
+}
+
+/* How It Works */
+#how-it-works {
+  background: #EFF6FF;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.step-card {
+  background: white;
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  width: 250px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* CTA */
+#cta {
+  padding: 4rem 2rem;
+  text-align: center;
+  background-color: #1E40AF;
+  color: white;
+}
+
+#cta button {
+  background-color: #16A34A;
+}
+
+#cta button:hover {
+  background-color: #15803D;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #1E3A8A;
+  color: white;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: #FBBF24;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+  #hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image {
+    margin-top: 2rem;
+  }
+
+  .counters, .steps {
+    flex-direction: column;
+    align-items: center;
+  }
+>>>>>>> 3f62b6a4e4f46d684f149e1e3746ca3867e07621
 }

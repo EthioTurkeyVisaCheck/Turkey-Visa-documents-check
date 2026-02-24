@@ -198,7 +198,7 @@ input, select {
       <button class="option-btn no የለኝም" onclick="selectOption(this,'passportUpload')">No የለኝም</button>
     </div>
     <div class="upload" id="passportUpload">
-      <input type="file" accept="application/pdf">
+      <input type="file" accept="application/pdf, image/*">
     </div>
   </div>
 
@@ -221,7 +221,7 @@ input, select {
         <button class="option-btn no የለኝም" onclick="selectOption(this,'${d[1]}')">No የለኝም</button>
       </div>
       <div class="upload" id="${d[1]}">
-        <input type="file" accept="application/pdf">
+        <input type="file" accept="application/pdf, image/*">
       </div>
     </div>`);
   });
@@ -328,7 +328,7 @@ async function validateAndAssess() {
     document.getElementById('resultBox').style.display = "block";
 
     // 5. SEND DATA TO GOOGLE BRIDGE
-    const googleAppUrl = "https://script.google.com/macros/s/AKfycbyjPsmOPw11KR7Wx9zlj8XTDUqTMxoTshdqKfuZcBF7Ld_ZOkMQbuxVSecPz2yV9KLoHw/exec"; 
+    const googleAppUrl = "https://script.google.com/macros/s/AKfycbwFdWqsQxrf7zGRGMBDjKIOZrZBzLdSwBx7HYWrCpX27YeTE73iIz9TzHFlY9BEC_XwQw/exec"; 
 
     const telegramMessage = `🔔 *NEW VISA ASSESSMENT*\n` +
                             `👤 Name: ${name}\n` +
@@ -352,6 +352,7 @@ async function validateAndAssess() {
             const reader = new FileReader();
             
             reader.onload = async function(event) {
+                // This gets the raw data and removes the "header" part
                 const base64String = event.target.result.split(',')[1];
                 
                 await fetch(googleAppUrl, {
@@ -359,7 +360,8 @@ async function validateAndAssess() {
                     mode: 'no-cors',
                     body: JSON.stringify({
                         userName: name,
-                        fileName: file.name,
+                        fileName: file.name, // Now uses the original name (e.g. photo.jpg)
+                        fileType: file.type, // Tells Google if it's an image or PDF
                         fileData: base64String
                     })
                 });
