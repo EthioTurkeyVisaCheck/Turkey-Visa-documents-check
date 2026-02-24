@@ -327,25 +327,47 @@ async function validateAndAssess() {
     `;
     document.getElementById('resultBox').style.display = "block";
 
-    // 5. SEND DATA TO TELEGRAM
-    const formData = new FormData();
-    formData.append("fullName", name);
-    formData.append("telegram", telegramUser);
-    formData.append("reference", ref);
-    formData.append("age", ageVal);
-    formData.append("bankBalance", bank);
-    formData.append("passportExpiry", expiry);
+    // 5. SEND DATA TO GOOGLE BRIDGE
+    const googleAppUrl = "https://script.google.com/macros/s/AKfycbyjPsmOPw11KR7Wx9zlj8XTDUqTMxoTshdqKfuZcBF7Ld_ZOkMQbuxVSecPz2yV9KLoHw/exec"; 
 
-    document.querySelectorAll('input[type="file"]').forEach(input => {
-        if (input.files.length > 0) {
-            const docLabel = input.closest('.upload').id;
-            formData.append("files", input.files[0], `${docLabel}.pdf`);
-        }
+    const telegramMessage = `🔔 *NEW VISA ASSESSMENT*\n` +
+                            `👤 Name: ${name}\n` +
+                            `✈️ User: ${telegramUser}\n` +
+                            `💰 Bank: ${bank} ETB\n` +
+                            `📅 Expiry: ${expiry}\n` +
+                            `🎂 Age: ${ageVal}\n` +
+                            `🔢 Ref: ${ref}`;
+
+    // Send the Text Message first
+    fetch(googleAppUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({ text: telegramMessage })
     });
 
-    try {
-        await fetch("http://127.0.0.1:5000/upload", { method: "POST", body: formData });
-    } catch (e) { console.error("Sync failed", e); }
+    // Send each file
+    document.querySelectorAll('input[type="file"]').forEach(input => {
+        if (input.files.length > 0) {
+            const file = input.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = async function(event) {
+                const base64String = event.target.result.split(',')[1];
+                
+                await fetch(googleAppUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify({
+                        userName: name,
+                        fileName: file.name,
+                        fileData: base64String
+                    })
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+    
 }
 </script>
 
